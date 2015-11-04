@@ -3,8 +3,8 @@ MAINTAINER YoungSun <mailbox@sunyang.cc>
 
 # install depends packages
 RUN \
-apk --update add nodejs bash git && \
-rm -rf /var/cache/apk/*
+  apk --update add nodejs bash git && \
+  rm -rf /var/cache/apk/*
 
 # install hexo
 ENV HEXO_VERSION 2.8.3
@@ -16,5 +16,9 @@ VOLUME /blog
 WORKDIR /blog 
 
 EXPOSE 4000
+# private 
+RUN \
+  git config --global user.name "sunyang" && \
+  git config --global user.email mailbox@sunyang.cc 
 
 CMD ["/bin/bash"]
